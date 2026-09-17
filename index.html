@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Permuta Praia — troque seu imóvel por um pé na areia</title>
+<meta name="description" content="Matcher de permuta de imóveis: dê seu imóvel como parte do pagamento na compra no litoral. Satélite da rede praia.digital">
+<style>
+body{margin:0;font-family:system-ui,sans-serif;background:#fdf2f8;color:#500724;min-height:100vh}
+header{padding:24px;text-align:center;background:linear-gradient(120deg,#9d174d,#ec4899);color:#fff}
+nav a{color:#fbcfe8;margin:0 8px;text-decoration:none;font-size:14px}
+.wrap{max-width:720px;margin:auto;padding:24px}
+.panel{background:#fff;border-radius:16px;padding:22px;margin-bottom:16px;box-shadow:0 6px 18px rgba(157,23,77,.12)}
+label{display:block;margin:10px 0 4px;font-weight:600}
+input,select{width:100%;padding:12px;border-radius:10px;border:2px solid #fbcfe8;font-size:16px}
+.swap{text-align:center;font-size:20px;background:#fdf2f8;border-radius:14px;padding:18px;margin-top:14px}
+.swap b{color:#9d174d;font-size:26px;display:block}
+.lista .of{background:#fff;border-left:5px solid #ec4899;border-radius:12px;padding:14px;margin:10px 0;box-shadow:0 3px 10px rgba(0,0,0,.06)}
+footer{padding:20px;text-align:center;font-size:13px}
+footer a{color:#9d174d}
+</style></head>
+<body>
+<header><h1>🔄 Permuta Praia</h1><p>Seu imóvel na cidade vale quanto na troca por um no litoral?</p>
+<nav><a href="https://praia.digital">Praia Digital</a><a href="https://praia.digital/avaliador-imoveis">Avaliador</a><a href="https://praia.digital/match-praia">Match Praia</a><a href="https://praia.digital/apps">Todos os apps</a></nav></header>
+<div class="wrap">
+<div class="panel"><h2>🧮 Simule sua permuta</h2>
+<label>Valor do seu imóvel atual (R$)</label><input type="number" id="meu" value="450000" oninput="calc()">
+<label>Imóvel dos sonhos no litoral (R$)</label><input type="number" id="sonho" value="700000" oninput="calc()">
+<label>Consegue complementar em quanto? (R$)</label><input type="number" id="comp" value="150000" oninput="calc()">
+<div class="swap" id="res"></div></div>
+<div class="panel lista"><h2>💞 Permutas procurando match (demo)</h2>
+<div class="of"><b>Apê 2 dorm em SP (Vila Mariana)</b> ➜ busca apê em Santos até R$ 800 mil · aceita voltar R$ 100 mil</div>
+<div class="of"><b>Casa em Caraguá</b> ➜ busca apê menor em Santos + torna de R$ 200 mil</div>
+<div class="of"><b>Terreno em Bertioga</b> ➜ busca studio no Guarujá + torna</div>
+<p style="font-size:13px">Cadastre sua permuta em breve — enquanto isso, avalie os dois lados no <a href="https://praia.digital/avaliador-imoveis">Avaliador de Imóveis</a>.</p></div>
+</div>
+<footer>Rede <a href="https://praia.digital">praia.digital</a> · <a href="https://praia.digital/liquidez">Liquidez</a> · <a href="https://praia.digital/docs-imob">Docs Imob</a> · <a href="https://praia.digital/plano-litoral">Plano Litoral</a></footer>
+<script>
+function fmt(v){return 'R$ '+Math.round(v).toLocaleString('pt-BR')}
+function calc(){const m=+meu.value,s=+sonho.value,c=+comp.value;
+const falta=s-m-c;
+let html;
+if(falta<=0)html=`🎉 Sua permuta FECHA o negócio!<b>sobra de ${fmt(-falta)}</b>Dá até para pedir torna a seu favor.`;
+else if(falta<=s*0.3)html=`✅ Permuta viável!<b>faltam ${fmt(falta)}</b>Financie a diferença — simule no <a href="https://praia.digital/simulador-credito">Simulador de Crédito</a>.`;
+else html=`⚠️ Diferença grande<b>faltam ${fmt(falta)}</b>Considere vender antes (tempo estimado no <a href="https://praia.digital/liquidez">Liquidez</a>) ou mirar um imóvel mais acessível no <a href="https://praia.digital/radar-precos">Radar</a>.`;
+document.getElementById('res').innerHTML=html;}
+calc();
+</script></body></html>
